@@ -1,95 +1,148 @@
-#Real-Time Phishing Detection Chrome Extension
-A Machine Learning–powered Chrome extension that detects phishing websites in real time and displays a confidence probability. This project focuses on web security, applied machine learning, and browser extension development—ideal for students, developers, and cybersecurity enthusiasts.
 
-#Features
-✅ Real-Time Website Analysis  
-Monitors the currently visited website and analyzes it instantly without interrupting browsing.
+# 🛡️ Real-Time Phishing Detection Chrome Extension using Machine Learning
 
-✅ Phishing Detection  
-Classifies websites as phishing or legitimate using trained Machine Learning models.
+PhishShield is a real-time phishing detection system built as a Google Chrome extension.
+It analyzes the currently visited website and classifies it as phishing or legitimate,
+while displaying a confidence probability to help users make informed security decisions.
 
-✅ Probability-Based Output  
-Displays the phishing probability score to help users make informed decisions.
+The project initially used Logistic Regression and was later optimized using a
+Random Forest classifier for improved accuracy and robustness.
 
-✅ Machine Learning Pipeline  
-Implements feature extraction using URL and text-based features with TF-IDF.
+------------------------------------------------------------
 
-✅ Model Optimization  
-Initially built using Logistic Regression and later optimized using Random Forest for better accuracy and robustness.
+FEATURES
 
-✅ Lightweight Chrome Extension  
-Fast, efficient, and runs entirely during browsing sessions.
+- Real-time phishing website detection
+- Displays phishing probability score
+- Fast and lightweight Chrome extension
+- Machine Learning–based classification
+- Optimized Random Forest model
+- Enhances web security awareness
 
+------------------------------------------------------------
 
+MACHINE LEARNING APPROACH
 
-📁 Directory Structure
-PhishShield/
-├── major/                     # ML models, dataset, and training scripts (Backend)
-│   ├── dataset_phishing.csv
-│   ├── train_phish.py
-│   ├── bundle_creator.py
-│   ├── randomforest_model.joblib
-│   ├── logistic_model.joblib
-│   └── phishing_model_bundle.joblib
-│
-├── PhishShield_Extension/     # Chrome extension source code
-│   ├── manifest.json
-│   ├── background.js
-│   ├── contentScript.js
-│   ├── popup.html
-│   ├── popup.css
-│   └── popup.js
-│
-└── README.md
+Initial Model      : Logistic Regression
+Optimized Model    : Random Forest Classifier
 
+Feature Engineering:
+- URL-based features
+- Text-based features using TF-IDF
 
+Output:
+- Website classification (Phishing / Legitimate)
+- Confidence probability score
 
+------------------------------------------------------------
 
-✅ Step-by-Step System Flow
-1. Capture active website URL
-2. Extract URL and webpage features
-3. Apply trained ML model for prediction
-4. Display phishing status and probability
+SYSTEM WORKFLOW
 
-   
-#Requirements:
-Python 3.x  
-Google Chrome Browser  
-   
+1. Chrome extension captures the active website URL
+2. URL and webpage features are extracted
+3. Trained Random Forest model performs prediction
+4. Result and probability are displayed in the extension popup
 
+------------------------------------------------------------
 
-▶️ Run the Project
- *Run the Backend:
-   In the folder major run:
-   1. Install Required Dependencies:
-         pip install -r requirements.txt
-         pip install flask scikit-learn joblib pandas numpy
-      
-   2. python -m uvicorn server:app --reload   (runs the server)
+TECH STACK
 
- *Load the Chrome extension manually:
-  1. Open chrome://extensions/
-  2. Enable Developer Mode
-  3. Click Load unpacked
-  4. Select the PhishShield_Extension folder
+- Programming Languages : Python, JavaScript
+- Machine Learning      : Logistic Regression, Random Forest
+- Feature Extraction    : TF-IDF, URL-based features
+- Backend               : Python (Flask)
+- Frontend              : HTML, CSS, JavaScript
+- Platform              : Google Chrome Extension
 
-The extension will start detecting phishing websites in real time.
+------------------------------------------------------------
 
-✅ Model Pipeline Overview
-We modularized the Machine Learning workflow into the following stages:
-
-- Feature Extraction (URL & text-based)
-- TF-IDF Vectorization
-- Model Training (Logistic Regression → Random Forest)
-- Model Bundling for deployment
-- Real-time inference via Chrome extension
+<pre>
+PROJECT STRUCTURE
 
 
-✅ Educational Use
-This project is ideal for:
+|-- major/
+|   |-- dataset_phishing.csv
+|   |-- train_phish.py
+|   |-- bundle_creator.py
+|   |-- server.py
+|   |-- randomforest_model.joblib
+|   |-- logistic_model.joblib
+|   |-- tfidf_vectorizer.joblib
+|   |-- phishing_model_bundle.joblib
+|
+|-- PhishShield_Extension/
+|   |-- manifest.json
+|   |-- background.js
+|   |-- contentScript.js
+|   |-- popup.html
+|   |-- popup.css
+|   |-- popup.js
+|
+|-- README.md
+</pre>
 
-Machine Learning projects
-Cybersecurity and phishing detection studies
-Browser extension development
-Understanding real-time ML inference systems
-Research on web security automation
+
+
+------------------------------------------------------------
+
+HOW TO RUN THE BACKEND
+
+Step 1: Navigate to backend folder
+cd major
+
+Step 2: Install dependencies
+pip install flask scikit-learn joblib pandas numpy
+
+Step 3: Start the backend server
+python server.py
+
+
+
+NOTE:
+Keep the backend running while using the Chrome extension.
+
+------------------------------------------------------------
+
+HOW TO LOAD THE CHROME EXTENSION
+
+1. Open chrome://extensions/ in Google Chrome
+2. Enable Developer Mode
+3. Click Load unpacked
+4. Select the PhishShield_Extension folder
+5. Pin the extension and start browsing
+
+------------------------------------------------------------
+
+FUTURE ENHANCEMENTS
+
+- Deep learning–based phishing detection (CNN / LSTM)
+- Automatic blocking of malicious websites
+- Offline inference support
+- Multi-attack detection (XSS, SQL Injection)
+- Mobile browser compatibility
+
+------------------------------------------------------------
+
+EDUCATIONAL USE
+
+This project is suitable for:
+- Machine Learning projects
+- Cybersecurity and phishing detection studies
+- Browser extension development
+- Real-time ML inference systems
+- Final-year academic projects
+
+------------------------------------------------------------
+
+AUTHOR
+
+Varsha Jha
+Computer Science & Engineering
+Interests: Machine Learning, Cybersecurity
+
+------------------------------------------------------------
+
+DISCLAIMER
+
+This project is intended for educational and research purposes only
+and should not replace professional security solutions.
