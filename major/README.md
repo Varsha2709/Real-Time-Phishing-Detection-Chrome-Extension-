@@ -1,1 +1,3 @@
+Backend & Machine Learning
+
 Contains the complete Machine Learning pipeline and backend logic for phishing detection, including dataset, feature extraction, model training (Logistic Regression and Random Forest), model bundling, and the Flask server used for real-time predictions.
