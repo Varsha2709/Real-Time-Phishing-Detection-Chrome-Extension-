@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>PhishShield</title>
+    <style>
+      body { font-family: Arial, sans-serif; width: 260px; padding: 12px; }
+      .safe { color: green; }
+      .phish { color: darkred; }
+      button { margin-top: 8px; }
+    </style>
+  </head>
+  <body>
+    <h3>PhishShield</h3>
+    <div id="status">Waiting for result...</div>
+    <div id="score" style="margin-top:8px;"></div>
+    <div id="reasons" style="margin-top:8px; font-size:12px;"></div>
+    <button id="report">Report</button>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+        const [tab] = await chrome.tabs.query({active:true,lastFocusedWindow:true});
+        const key = 'result-' + (tab?.id || 'last');
+        chrome.storage.session?.get?.([key], (res) => {
+          const r = res[key];
+          if (!r) { document.getElementById('status').textContent = 'No result yet'; return; }
+          const probability = r.probability ?? 0;
+          document.getElementById('score').textContent = 'Probability: ' + (probability*100).toFixed(1) + '%';
+          if (probability >= 0.7) {
+            document.getElementById('status').textContent = '⚠️ Likely Phishing';
+            document.getElementById('status').className = 'phish';
+          } else {
+            document.getElementById('status').textContent = '✅ Likely Safe';
+            document.getElementById('status').className = 'safe';
+          }
+          if (r.reasons) {
+            document.getElementById('reasons').textContent = 'Top signals: ' + r.reasons.join(', ');
+          }
+        });
+
+        document.getElementById('report').addEventListener('click', () => {
+          alert('Thank you — report received (demo).');
+        });
+      });
+    </script>
+  </body>
+</html>

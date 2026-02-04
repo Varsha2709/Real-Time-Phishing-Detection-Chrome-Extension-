@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "PhishShield (ML demo)",
+  "version": "0.1",
+  "description": "Detect phishing pages using a ML model (demo).",
+  "permissions": ["scripting", "storage", "activeTab", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "PhishShield"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "icons": {
+    "48": "icon48.png"
+  }
+}
