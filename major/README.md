@@ -1,1 +1,1 @@
-Contains the Google Chrome extension source code responsible for capturing the active website, communicating with the backend, and displaying phishing detection results along with probability scores in real time.
+Contains the complete Machine Learning pipeline and backend logic for phishing detection, including dataset, feature extraction, model training (Logistic Regression and Random Forest), model bundling, and the Flask server used for real-time predictions.
