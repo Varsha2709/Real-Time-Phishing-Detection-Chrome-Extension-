@@ -1,1 +1,1 @@
-
+Contains the Google Chrome extension source code responsible for capturing the active website, communicating with the backend, and displaying phishing detection results along with probability scores in real time.
